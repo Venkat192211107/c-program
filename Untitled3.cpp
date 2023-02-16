@@ -1,26 +1,48 @@
-#include <stdio.h>
+#include<stdio.h>
+ 
 int main()
 {
-	int num,res=0;
-	clrscr();
-	printf("\nENTER A NUMBER: ");
-	scanf("%d",&num);
-	res=prime(num);
-	if(res==0)
-		printf("\n%d IS A PRIME NUMBER",num);
-	else
-		printf("\n%d IS NOT A PRIME NUMBER",num);
-	getch();
-}
-int prime(int n)
-{
-	int i;
-	for(i=2;i<=n/2;i++)
-	{
-		if(n%i!=0)
-			continue;
-		else
-			return 1;
+ 	int i, j, rows, columns, a[10][10], b[10][10], Count = 1;
+  
+ 	printf("\n Please Enter Number of rows and columns  :  ");
+ 	scanf("%d %d", &i, &j);
+ 
+ 	printf("\n Please Enter the Matrix Elements \n");
+ 	for(rows = 0; rows < i; rows++)
+  	{
+   		for(columns = 0;columns < j;columns++)
+    	{
+      		scanf("%d", &a[rows][columns]);
+    	}
+  	}
+   	//Transpose of matrix 
+ 	for(rows = 0; rows < i; rows++)
+  	{
+   		for(columns = 0;columns < j; columns++)
+    	{
+      		b[columns][rows] = a[rows][columns];
+    	}
+  	}
+     
+ 	for(rows = 0; rows < i; rows++)
+  	{
+   		for(columns = 0; columns < j; columns++)
+    	{
+    		if(a[rows][columns] != b[rows][columns])
+    		{
+    			Count++;  
+				break;  		
+			}
+   	 	}
+  	}
+  	if(Count == 1)
+  	{
+  		printf("\n The Matrix that you entered is a Symmetric Matrix ");
 	}
-	return 0;
+	else
+	{
+		printf("\n The Matrix that you entered is Not a Symmetric Matrix ");
+	}
+  	
+ 	return 0;
 }
